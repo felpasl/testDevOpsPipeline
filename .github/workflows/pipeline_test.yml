@@ -12,6 +12,14 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      path:
+        type: string
+        default: /path/test/
+        description: Artifact Path Value
+      environment:
+        type: environment
+        description: Select the environment
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -40,4 +48,4 @@ jobs:
           azure-devops-project-url: '${{ secrets.AZURE_DEVOPS_URL }}'
           azure-pipeline-name: '${{ secrets.AZURE_DEVOPS_PIPELINE }}' # name of the Azure pipeline to be triggered
           azure-devops-token: '${{ secrets.AZURE_DEVOPS_TOKEN }}'
-          azure-pipeline-variables:  '{"variable1": "value1", "variable2": "value2"}' # optional
+          azure-pipeline-variables:  '{"ENV": "{{github.event.inputs.environment}}", "ARTIFACT_PATH": "{{github.event.inputs.path}}"}' # optional
