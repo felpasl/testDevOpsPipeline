@@ -48,4 +48,4 @@ jobs:
           azure-devops-project-url: '${{ secrets.AZURE_DEVOPS_URL }}'
           azure-pipeline-name: '${{ secrets.AZURE_DEVOPS_PIPELINE }}' # name of the Azure pipeline to be triggered
           azure-devops-token: '${{ secrets.AZURE_DEVOPS_TOKEN }}'
-          azure-pipeline-variables:  '{"ENV": "{{github.event.inputs.environment}}", "ARTIFACT_PATH": "{{github.event.inputs.path}}"}' # optional
+          azure-pipeline-variables:  '{"ENV": "${{github.event.inputs.environment}}", "ARTIFACT_PATH": "${{github.event.inputs.path}}"}' # optional
